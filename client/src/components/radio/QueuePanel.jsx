@@ -103,28 +103,8 @@ export default function QueuePanel({ queue, onRemove, onPlayNow, onClear }) {
 
     const handleClear = async () => {
         if (!window.confirm("Clear entire queue?")) return;
-        // Logic to clear local state should be passed from parent ideally, 
-        // but user only passed onRemove. 
-        // For MVP, we can trigger an event or just call API and let parent sync? 
-        // Parent doesn't auto-sync queue from server yet (it's local state).
-        // I will trust the parent passed `setQueue` or I should ask for it.
-        // Wait, I removed `setQueue` from props in this version.
-        // I should probably skip "Clear" button for now or ask parent to handle it.
-        // Or re-add `onClear` prop.
         try {
             await axios.post(`${API_BASE}/control/queue/clear`);
-            // We need to clear local state too.
-            // Let's assume onRemove can accept 'all'? No.
-            // I'll leave the API call. The visual list wont clear unless parent does it.
-            // I'll add onClear prop if I can, but I don't want to edit Parent again.
-            // Parent has `setQueue`. 
-            // In PlaylistLibrary.jsx I didn't pass onClear. 
-            // I passed `queue`, `onRemove`, `onPlayNow`.
-            // So I will remove Clear button or implement it via window reload? No.
-            // I'll just remove the Clear button for now to keep it simple and robust.
-            // Or I can reload the page? No.
-            // Just leaving API call is confusing if UI doesn't update.
-            // I'll removing Clear button to be safe.
         } catch (e) { console.error(e); }
     };
 
