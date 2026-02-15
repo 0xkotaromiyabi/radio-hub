@@ -24,11 +24,7 @@ export default function SolanaPanel() {
     const fetchBalance = async () => {
         if (!address || !connection) return;
         try {
-            // connection.getBalance takes a PublicKey object, but often strings work if the adapter handles it 
-            // BUT Reown adapter typically provides a web3.js Connection object.
-            // We need to construct a PublicKey from the address string.
-            // Let's dynamically import PublicKey if needed or assume string works?
-            // Standard web3.js getBalance needs PublicKey.
+
             const { PublicKey } = await import('@solana/web3.js');
             const pubKey = new PublicKey(address);
             const bal = await connection.getBalance(pubKey);
