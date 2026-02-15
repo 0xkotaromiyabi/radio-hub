@@ -28,9 +28,7 @@ function DraggableLibraryItem({ file, isPlaying, onPlayNext, onDelete, onAddToQu
         data: { file, type: 'library-item' }
     });
 
-    // We don't apply transform to the list item itself to avoid it moving while dragging
-    // Instead we use DragOverlay. Accessing transform here might move the item in the list which looks weird for "copy" op.
-    // So we invoke setNodeRef but ignore transform style for the static item.
+    // apply transform to the list item itself to avoid it moving while dragging
 
     return (
         <div ref={setNodeRef} className={cn(
