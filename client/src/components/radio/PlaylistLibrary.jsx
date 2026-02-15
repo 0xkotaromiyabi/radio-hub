@@ -161,13 +161,10 @@ export default function PlaylistLibrary({ files, onUpload, onDelete, onPush, rad
         }
 
         // Dropping Library Item into Queue (Sortable Context or Droppable container)
-        // If we drop a library item onto a queue item, it should insert?
-        // Or just general drop.
+
         if (String(active.id).startsWith('lib-')) {
             // Check if dropped over queue area
-            // We can check if `over.id` exists in queue IDs OR if it's a generic container ID
-            // Since QueuePanel items are sortables, `over.id` will likely be a queue item ID or the container.
-            // For now, let's just Append if dropped anywhere in the list.
+
             const fileName = active.data.current?.file;
             if (fileName) addToQueue(fileName);
         }
