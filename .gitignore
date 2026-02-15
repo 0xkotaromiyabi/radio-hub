@@ -1,0 +1,13 @@
+node_modules
+.env
+radio.db
+dist
+build.log
+final_build_test.log
+*.db
+*.log
+recordings/
+music/
+jingles/
+ads/
+uploads/
